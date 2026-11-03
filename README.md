@@ -65,13 +65,13 @@ Kein Konto, keine Cloud, keine Internet-Berechtigung.
 ## Technik
 
 - Kotlin 2.2, Jetpack Compose (Material 3) und Compose for Wear OS
-- Wear Tiles (Protolayout 1.5) und Watch-Face-Complications
+- Wear Tiles (Tiles 1.5, ProtoLayout 1.3) und Watch-Face-Complications
 - Wearable Data Layer (`play-services-wearable`)
 - `minSdk 30`, `compileSdk`/`targetSdk 37`, AGP 9.5, Gradle 9.6
 
 ## Bauen
 
-Voraussetzung: Android Studio mit installiertem SDK 37 und JDK 17 aus dem Android-Studio-Bundle.
+Voraussetzung: Android Studio mit installiertem SDK 37 und JDK 25 (Toolchain laut `gradle/gradle-daemon-jvm.properties`).
 `local.properties` mit `sdk.dir=…` wird von Android Studio automatisch angelegt und ist nicht im Repo.
 
 ```powershell
