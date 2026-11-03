@@ -1,0 +1,47 @@
+# ---------------------------------------------------------------------------
+# Android / Gradle build output
+# ---------------------------------------------------------------------------
+*.iml
+.gradle/
+.kotlin/
+build/
+/captures
+.externalNativeBuild/
+.cxx/
+
+# ---------------------------------------------------------------------------
+# Machine-specific configuration (SDK path, user name, ...)
+# ---------------------------------------------------------------------------
+local.properties
+local.properties.*
+
+# Signing material never leaves the machine
+*.jks
+*.keystore
+keystore.properties
+signing.properties
+
+# ---------------------------------------------------------------------------
+# IDE state (local paths, workspace history)
+# ---------------------------------------------------------------------------
+.idea/
+.DS_Store
+Thumbs.db
+
+# ---------------------------------------------------------------------------
+# Logs and device dumps (can contain personal data)
+# ---------------------------------------------------------------------------
+*.log
+logcat*.txt
+*.hprof
+
+# ---------------------------------------------------------------------------
+# Local helper notes (contain private paths, device IDs, LAN addresses)
+# ---------------------------------------------------------------------------
+.github/copilot-instructions.md
+
+# ---------------------------------------------------------------------------
+# Ad-hoc screen captures in the project root stay local.
+# The curated images used by the README live in docs/screenshots/.
+# ---------------------------------------------------------------------------
+/*.png

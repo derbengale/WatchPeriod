@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">WatchPeriod</string>
+    <string name="cycle_widget_label">Zyklusring</string>
+    <string name="cycle_widget_description">Ring mit dem aktiven Zyklustag und der aktuellen Phase.</string>
+    <string name="cycle_widget_ring">Zyklusring</string>
+    <string name="cycle_widget_no_data">Keine Daten</string>
+</resources>

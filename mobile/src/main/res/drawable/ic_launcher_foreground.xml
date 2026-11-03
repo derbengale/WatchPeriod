@@ -1,0 +1,17 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <!-- cycle ring: 10 phase dots around the centre -->
+    <path android:fillColor="#FFFF5470" android:pathData="M49,29a5,5 0 1,0 10,0a5,5 0 1,0 -10,0" />
+    <path android:fillColor="#FFFF5470" android:pathData="M63.69,33.77a5,5 0 1,0 10,0a5,5 0 1,0 -10,0" />
+    <path android:fillColor="#FF5BC47A" android:pathData="M72.78,46.27a5,5 0 1,0 10,0a5,5 0 1,0 -10,0" />
+    <path android:fillColor="#FF5BC47A" android:pathData="M72.78,61.73a5,5 0 1,0 10,0a5,5 0 1,0 -10,0" />
+    <path android:fillColor="#FF4DB8FF" android:pathData="M63.69,74.23a5,5 0 1,0 10,0a5,5 0 1,0 -10,0" />
+    <path android:fillColor="#FFA67CFF" android:pathData="M49,79a5,5 0 1,0 10,0a5,5 0 1,0 -10,0" />
+    <path android:fillColor="#FFA67CFF" android:pathData="M34.31,74.23a5,5 0 1,0 10,0a5,5 0 1,0 -10,0" />
+    <path android:fillColor="#FFA67CFF" android:pathData="M25.22,61.73a5,5 0 1,0 10,0a5,5 0 1,0 -10,0" />
+    <path android:fillColor="#FFFFA040" android:pathData="M25.22,46.27a5,5 0 1,0 10,0a5,5 0 1,0 -10,0" />
+    <path android:fillColor="#FFFFA040" android:pathData="M34.31,33.77a5,5 0 1,0 10,0a5,5 0 1,0 -10,0" />
+</vector>
