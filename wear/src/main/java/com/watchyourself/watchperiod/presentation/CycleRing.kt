@@ -26,6 +26,7 @@ import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.input.pointer.positionChange
 import androidx.compose.ui.input.rotary.onRotaryScrollEvent
 import java.time.format.DateTimeFormatter
+import java.util.Locale
 import com.watchyourself.watchperiod.domain.Hormone
 import com.watchyourself.watchperiod.domain.HormoneEstimator
 import com.watchyourself.watchperiod.domain.TemperatureEstimator
@@ -378,7 +379,7 @@ private fun DayDateLine(state: CycleState, offset: Int) {
     )
 }
 
-private val dayFormat = DateTimeFormatter.ofPattern("d. MMM")
+private val dayFormat = DateTimeFormatter.ofPattern("EEE d. MMM", Locale.GERMAN)
 
 /** Info for a tapped cycle day (0-based index). */
 fun dayInfo(state: CycleState, offset: Int): Pair<String, String> {

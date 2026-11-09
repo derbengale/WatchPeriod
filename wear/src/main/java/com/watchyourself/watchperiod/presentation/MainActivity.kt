@@ -21,7 +21,6 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.rememberPagerState
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.watchyourself.watchperiod.domain.Period
 import androidx.compose.runtime.Composable
@@ -469,16 +468,34 @@ fun WearApp(refreshKey: Int = 0, launchDate: LocalDate? = null) {
                             }
                             item {
                                 Text(
-                                    "Ereignisse: Tippen +1 · Lang drücken −1",
+                                    "Ereignisse & Stimmung: Tippen +1 · Lang drücken −1",
                                     style = MaterialTheme.typography.labelSmall,
                                     color = MaterialTheme.colorScheme.onSurfaceVariant,
                                     modifier = Modifier.fillMaxWidth(),
                                 )
                             }
                             item {
-                                MoodStepper(mood) { value ->
-                                    if (value == null) repo.deleteMood(date) else repo.saveMood(date, value)
-                                    changed()
+                                // Same interaction as the event rows: tap +1, long press −1.
+                                ActionButton(
+                                    label = if (mood == null) {
+                                        "Stimmung · –"
+                                    } else {
+                                        "${EventType.moodEmoji(mood)} Stimmung · " +
+                                            "${EventType.moodLabel(mood)} · $mood"
+                                    },
+                                    onLongClick = {
+                                        val next = (mood ?: 0) - 1
+                                        if (next >= EventType.MIN_VALUE) {
+                                            repo.saveMood(date, next)
+                                            changed()
+                                        }
+                                    },
+                                ) {
+                                    val next = (mood ?: 0) + 1
+                                    if (next <= EventType.MAX_VALUE) {
+                                        repo.saveMood(date, next)
+                                        changed()
+                                    }
                                 }
                             }
                             EventType.entries.filter { !it.scaled }.forEach { type ->
@@ -941,46 +958,6 @@ private fun TransformingLazyColumnItemScope.Stepper(
             Text(label, style = MaterialTheme.typography.labelSmall)
         }
         IconButton(onClick = { onChange(value + 1) }, enabled = enabled && value < range.last) { Text("+") }
-    }
-}
-
-/**
- * Mood is a value from −2 to +2, not a count. The two buttons create the first entry when
- * nothing is logged yet (+ → Gut, − → Schlecht); Neutral is reachable from either side.
- */
-@Composable
-private fun TransformingLazyColumnItemScope.MoodStepper(
-    value: Int?,
-    onChange: (Int?) -> Unit,
-) {
-    val spec = rememberTransformationSpec()
-    Row(
-        Modifier.fillMaxWidth().transformedHeight(this, spec),
-        horizontalArrangement = Arrangement.SpaceBetween,
-        verticalAlignment = Alignment.CenterVertically,
-    ) {
-        IconButton(
-            onClick = { onChange((value ?: 0) - 1) },
-            enabled = value == null || value > EventType.MIN_VALUE,
-        ) { Text("−") }
-        Column(horizontalAlignment = Alignment.CenterHorizontally) {
-            Text(
-                if (value == null) "Stimmung: –" else "Stimmung: ${EventType.moodLabel(value)}",
-                style = MaterialTheme.typography.titleSmall,
-                textAlign = TextAlign.Center,
-            )
-            Text(
-                if (value == null) "− schlechter · + besser"
-                else "${EventType.moodEmoji(value)} ${value} · ± ändern",
-                style = MaterialTheme.typography.labelSmall,
-                color = MaterialTheme.colorScheme.onSurfaceVariant,
-                textAlign = TextAlign.Center,
-            )
-        }
-        IconButton(
-            onClick = { onChange((value ?: 0) + 1) },
-            enabled = value == null || value < EventType.MAX_VALUE,
-        ) { Text("+") }
     }
 }
 
